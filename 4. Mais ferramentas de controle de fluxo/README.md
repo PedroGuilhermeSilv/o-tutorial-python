@@ -27,3 +27,18 @@ Please enter an integer: 42
 
 ## 4.5. Comandos pass
 - O comando pass não faz nada. Pode ser usada quando a sintaxe exige um comando mas a semântica do programa não requer nenhuma ação.
+
+## 4.6 Instruções match
+- Uma instrução match pega uma expressão e compara seu valor com padrões sucessivos fornecidos como um ou mais blocos de case. Isso é superficialmente semelhante a uma instrução switch em C, Java ou JavaScript (e muitas outras linguagens), mas também pode extrair componentes (elementos de sequência ou atributos de objeto) do valor em variáveis, mas muito mais parecido com a correspondência de padrões em linguages como Rust ou Haskell. Observe o último bloco: o “nome da variável” _ atua como um curinga e nunca falha em corresponder. Se nenhum caso corresponder, nenhuma das ramificações será executada.
+```
+def http_error(status):
+    match status:
+        case 400|200:
+            return "Bad request"
+        case 404:
+            return "Not found"
+        case 418:
+            return "I'm a teapot"
+        case _:
+            return "Something's wrong with the internet"
+```
